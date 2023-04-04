@@ -1,0 +1,9 @@
+name: Kabibank
+version: '${project.version}'
+main: ua.kotarych.kabibank.Kabibank
+api-version: 1.17
+authors: [Kotarych]
+
+commands:
+  kabibank:
+  bank:

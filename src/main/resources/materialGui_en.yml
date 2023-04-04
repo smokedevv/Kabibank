@@ -1,0 +1,223 @@
+#
+# Warnings
+# You cannot put the same name and description of an item in the same menu
+#
+personnelMenu: 'LIME_SHULKER_BOX'
+# material for a button that, when pressed, takes you to the staff menu
+personnelName: '&5Staff menu'
+# the name of the button that takes you to the staff menu when pressed
+personnelLore:
+  - '&dMenu for staff'
+  - '&dYou %menuStatus%'
+# description of the button that takes you to the staff menu (%menuStatus% - menu accessibility status, replaced by personnelAvailable or personnelInaccessible)
+personnelAvailable: '&ahave access to'
+# replaces %menuStatus%
+personnelInaccessible: '&c are not allowed to access'
+# replaces %menuStatus%
+
+addBalansATM: 'DIAMOND'
+# material for the button that takes you to the ATM account replenishment menu
+addBalansAtmName: '&5Top up your ATM balance'
+# name for the button to go to the ATM account replenishment menu
+addBalansAtmLore:
+  - '&dClick to go to the ATM replenishment menu'
+# description for the button that takes you to the ATM replenishment menu
+
+removeBalansATM: 'DIAMOND'
+# material for a button that goes to the ATM cash withdrawal menu
+removeBalansAtmName: '&5Withdrawing money from the ATM balance'
+# name for the button that takes you to the ATM cash withdrawal menu
+removeBalansAtmLore:
+  - '&dPress to go to the ATM cash withdrawal menu'
+# description for the button that takes you to the menu for withdrawing money from the ATM balance
+
+currency: 'APPLE'
+# material for the currency in the currency selection menu or elsewhere
+currencyName: '&5%currency%'
+# %Currency% - currency name
+
+addBalans: 'DIAMOND'
+# material of the button in the menu for selecting the deposit amount
+addBalansName: '&5replenishment of the balance by %amount%'
+# name of the button for selecting the deposit amount (%amount% - top-up amount)
+addBalansLore:
+  - '&dClick to top-up'
+  - '&dCurrent balance: %amount%'
+# Description of the button for selecting the deposit amount (%amount% - card balance / ATM balance)
+
+removeBalans: 'GOLD_INGOT'
+# button material when selecting the amount of cash withdrawal
+removeBalansName: '&5Withdraw from the balance sheet %amount%'
+# name of the button when selecting the amount of cash withdrawal (%amount% - withdrawal amount)
+removeBalansLore:
+  - '&dClick to withdraw money'
+  - '&dCurrent balance: %amount%'
+# description of the button when selecting the amount of cash withdrawal (%amount% - card balance / ATM balance)
+
+createCard: 'PAPER'
+# material of the button for entering the bank card creation menu
+createCardName: '&5Create a new bank card'
+# name of the button to enter the bank card creation menu
+createCardLore:
+  - '&dClick to go to the menu for creating a bank card'
+# description of the button to enter the menu for creating a bank card
+
+infoCreateCard: 'GREEN_SHULKER_BOX'
+# material of the item that will show information in the bank card creation menu
+infoCreateCardName: '&5Select the currency of your bank card'
+# the name of the item that will display information in the card creation menu
+
+card: 'PAPER'
+# material of a physical bank card
+cardName: '&5Bank card %number%'
+# name of the physical bank card material (%number% - bank card number)
+cardLore:
+  - '&dBank card currency: %currency%'
+  - '&dOwner: %player%'
+# description of the material of the physical bank card (%currency% - card currency, %player% - owner card)
+enchantedCard: true
+# will the physical bank card be enchanted? (this is just an effect)
+
+menuCard: 'PAPER'
+# material of the button for entering the bank card menu
+menuCardName: '&5Bank card menu'
+# name of the button to enter the bank card menu
+menuCardLore:
+  - '&dClick to go to the bank card menu'
+# description of the event button when entering the bank card menu
+
+addBalansCard: 'GREEN_SHULKER_BOX'
+# material of the button to go to the bank card replenishment menu
+addBalansCardName: '&5Top up your bank card balance'
+# name of the button to go to the bank card replenishment menu
+addBalansCardLore:
+  - '&dClick to go to the bank card top-up menu'
+# description of the button to go to the bank card replenishment menu
+
+removeBalansCard: 'RED_SHULKER_BOX'
+# material of the button to go to the menu for withdrawing money from a bank card
+removeBalansCardName: '&5Withdraw money'
+# the name of the button to go to the bank card withdrawal menu
+removeBalansCardLore:
+  - '&dPress to go to the withdrawal menu'
+# description of the button to go to the bank card withdrawal menu
+
+selectionCard: 'PAPER'
+# card material in the card selection menu
+selectionCardName: '&5Card number: %number%'
+# card name in the bank card selection menu (%number% - number card)
+selectionCardLore:
+  - '&dClick to select this card'
+  - '&dCard balance: %balans%'
+  - '&dCard currency: %currency%'
+# card description in the bank card selection menu (%balans% - card balance, %currency% - card currency)
+
+deleteCard: 'SKELETON_SKULL'
+# material of the button to go to the bank card deletion menu
+deleteCardName: '&5Delete a card'
+# name of the button to go to the bank card deletion menu
+deleteCardLore:
+  - '&dPress to go to the card deletion menu'
+# description of the button to go to the bank card deletion menu
+
+yesDelete: 'ORANGE_CONCRETE'
+# material of the button to confirm card and ATM deletion
+yesDeleteName: '&5Yes to delete'
+# name of the button to confirm the deletion of the card and ATM
+
+yesDeleteCardLore:
+  - '&dYou really want to delete the card number %number%?'
+# description of the button to confirm the deletion of the bank card (%number% - number card)
+yesDeleteAtmLore:
+  - '&dDo you really want to delete this ATM?'
+# description of the ATM deletion confirmation button
+
+noDelete: 'LIGHT_BLUE_CONCRETE'
+# material of the button for cancelling the deletion of a bank card and ATM
+noDeleteName: '&5No do not delete'
+# name of the button for cancelling the deletion of a bank card and ATM
+
+noDeleteCardLore:
+  - '&dDo you really want to delete card %number%?'
+# description of the button for cancelling the deletion of a bank card (%number% - card number)
+noDeleteAtmLore:
+  - '&dDo you really want to delete this ATM?'
+# description of the button to cancel ATM deletion
+
+infoCard: 'CHEST'
+# material of the button to go to the menu of information on bank cards
+infoCardName: '&5Information about the cards'
+# name of the button to go to the menu of information about bank cards
+infoCardLore:
+  - '&dPress to go to the card information menu'
+# description of the button to go to the bank card information menu
+
+cardInfo: 'PAPER'
+# card material in the bank card information menu
+cardInfoName: '&5Card number %number%'
+# card name in the bank card information menu
+cardInfoLore:
+  - '&dBalans: %balans%'
+  - '&dCurrency: %currency%'
+# card description in the bank card information menu
+
+moneyTransferName: '&5Money transfer'
+# name of the button to go to the money transfer menu
+moneyTransferLore:
+  - '&dPress to go to the money transfer menu'
+# description of the button to go to the money transfer menu
+
+onlineTransfer: 'ENDER_PEARL'
+# material of the button for the entrance to the menu for transferring money to online players
+onlineTransferName: '&5Money transfer to online players'
+# name of the button to enter the menu for transferring money to online players
+onlineTransferLore:
+  - '&dClick to access the money transfer menu for online players'
+# description of the button for entering the menu for transferring money to online players
+
+offlineTransfer: 'ENDER_EYE'
+# material of the button for the entrance to the menu for transferring money to offline players
+offlineTransferName: '&5Transferring money to offline players'
+# name of the button to enter the menu for transferring money to offline players
+offlineTransferLore:
+  - '&dClick to go to the money transfer menu for offline players'
+# description of the event button in the menu for transferring money to offline players
+
+cardRecipient: 'PAPER'
+# матеріал кнопки банківської картки в меню вибору карток, на які можна переказувати гроші
+cardRecipientName: '&5Card number %number% owner %player%'
+# the name of the card button in the card selection menu to which to transfer money (%number% - number card, %player% - owner card)
+cardRecipientLore:
+  - '&dCurrency: %currency%'
+  - '&dOwner: %player%'
+  - '&dBalans: %balans%'
+# description of the card in the card selection menu to which to transfer money (%currency% - currency card, %player% - owner card, %balans% - balans card)
+
+previsionPage: 'REDSTONE_BLOCK'
+# material of the previous page button
+previsionPageName: '&5Previous page'
+# name of the previous page button
+previsionPageLore:
+  - '&dClick to go to the previous page'
+# description of the previous page button
+
+nextPage: 'LIME_TERRACOTTA'
+# material of the button to go to the next page
+nextPadeName: '&5Next page'
+# name of the button to go to the next page
+nextPageLore:
+  - '&dClick to go to the next page'
+# description of the button to go to the next page
+
+airMaterial: 'GRAY_STAINED_GLASS_PANE'
+# material with which the empty space will be occupied
+twoAirMaterial: 'BLACK_STAINED_GLASS_PANE'
+# secondary material that will occupy the empty space
+
+deleteAtm: 'CLOCK'
+# material of the button, when pressed, the ATM will be deleted
+deleteAtmName: '&5Remove this ATM'
+# the name of the button, when pressed, the ATM will be deleted
+deleteAtmLore:
+  - '&dClick to remove this ATM'
+# description of the button, when pressed, the ATM will be deleted

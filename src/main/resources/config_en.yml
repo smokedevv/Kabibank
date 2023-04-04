@@ -1,0 +1,31 @@
+language: 'en'
+#Current plugin language (to change the language, you need to restart the server)
+currentLan: 'en'
+# Do not touch this setting
+
+currencyList:
+  - 'Diamond'
+  - 'Gold'
+# list of your server's currencies
+materialDiamond: 'DIAMOND'
+# currency material called Diamonds (to choose the material for your currency, you need to write for example: materialНазваниеВалюты)
+materialGold: 'GOLD_INGOT'
+# currency material called Gold (to choose the material for your currency, you need to write for example: materialНазваниеВалюты)
+exchangeRateDiamondToGold: 30
+# the exchange rate, in this example 1 Diamonds = 30 GOLD, it is necessary that there is such a thing for every currency
+
+ignoreBalansATDeleteCard: false
+# whether to ignore the ATM balance when deleting the card
+
+dataPlayerCard: 'UUID'
+# in what format will the data about the player be read
+
+maxCardCreate: 36
+# maximum cards of all currencies (do not put more than 36)
+maxCardCreateDiamond: 10
+# maximum of cards of a certain currency (example creation maxCardCreateCurrencyName)
+
+maxCardCreateKotarych: 6
+# maximum cards of all currencies for a certain player (example creation maxCardCreateNickName)
+maxCardCreateDiamondKotarych: 3
+# maximum cards of a certain currency for a certain player (example creation maxCardCreateCurrencyNickname)

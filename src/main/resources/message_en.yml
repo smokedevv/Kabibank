@@ -1,0 +1,143 @@
+#
+# Bug`s reports
+#
+errorPermission: "&cYou don't have permission to execute this command"
+# a message when a player does not have the right to execute a command
+errorPermissionMenu: "&cYou don't have permission to open this menu"
+# the message when the player does not have the right to open this menu
+errorSenderConsole: '&cThis command can only be executed by a player'
+# a message when the console tries to execute a command that is intended for the player
+commandBankError: '&cError executing the command: /bank help'
+# error message executing the command /bank
+errorCreateATM: '&cUnfortunately the ATM data could not be saved unknown error'
+# error message ATM data collection
+errorDeleteATM: '&cError deleting the ATM, maybe you entered the ATM data incorrectly'
+# error message deleting ATM
+errorListATM: "&cYou haven't created a single ATM yet"
+# error message executing the command /bank list when there is not yet one ATM
+errorCreationATM: '&cThis ATM number does not exist yet'
+# a message when a player tries to delete an ATM that has not yet been created
+errorBalansAddATM: "&cYou don't have enough money to top up the ATM. Need: %amount%"
+# the message when the player does not have enough money to top up the ATM
+errorAddATM: '&cFailed to top up ATM , unknown error'
+# message for an unknown error when deleting an ATM
+errorBalansRemoveATM: '&cThere is not enough money in the ATM account to withdraw money from the ATM. Need: %amount%'
+# the message when there is not enough money in the ATM to withdraw money from the ATM
+errorRemoveATM: '&cFailed to withdraw money from ATM, unknown error'
+# a message with an unknown error while withdrawing money from an ATM
+errorFreeInventoryPlayer: "&cYou don't have enough space in your inventory to withdraw money"
+# a message when a player does not have enough money to withdraw money
+errorMaxCard: '&cYou have already created the maximum number of cards'
+# a message when the player has already created the maximum number of cards
+errorMaxCardCurrency: '&cYou have already created the maximum number of cards with this currency'
+# the message when the player has created the maximum number of cards of this currency
+errorFreeInventoryCreateCard: "&cYou don't have enough space in your inventory to get a card"
+# a message when a player does not have enough space to get a card
+errorAddBalansCard: "&cYou don't have enough currency in your inventory to top up your card. Need: %amount%"
+# a message when a player does not have enough currency in the inventory to top up the card
+errorRemoveBalansCard: '&cThere is not enough money on the card to withdraw them. Need: %amount% Balance: %balans%'
+# a message when there is not enough money on the card to withdraw it
+errorFreeInventoryCard: "&cYou don't have enough space in your inventory to withdraw money from your card"
+# a message when a player does not have enough space in the inventory to withdraw money from the card
+errorRemoveCardATM: '&cThere is not enough money on the ATM balance to withdraw it from the card'
+# message when there is not enough money on the ATM balance to withdraw money from the card
+errorFreeInventoryDeleteCard: "&cYou don't have enough space to get the money that's left on the card, need: %amount%"
+# the message when the player does not have enough space to get the money that was left on the card during the removal of the card(%amount% - количество которое нужно)
+errorBalansAtmDeleteCard: "&cYou can't delete the card so you can't get the money that's left on the card wait for someone to top up the ATM balance"
+# a message when there is not enough money on the ATM balance to get what is left on the card during the card deletion
+errorBalansTransferCard: "&cYou don't have enough money on your card to transfer it to another one. Need: %amount%"
+# message when there is not enough money on the card to transfer it to another card
+errorBalansTransfer: '&cMoney transfer error , currency exchange rates have not yet been created , but you can transfer to a card with a currency such as yours'
+# a message during a money transfer error when currency exchange rates have not yet been created
+errorBalansTransferAmount: '&cThe amount of money transfer is too small, try more money'
+# a message when the amount of money transferred is too small
+errorOpenOfflineTransfer: '&cNo player who is offline has yet created a card'
+# a message when no player who is offline has a created card
+#
+# Message about successful actions
+#
+successfullyDeleteATM: '&aATM successfully deleted'
+# message when the ATM was successfully deleted
+successfullyAddBalansATM: '&aATM number %number% was topped up on %amount% %currency%'
+# message when ATM top up is successful
+successfullyRemoveBalansATM: '&aFrom ATM number %number% successfully withdrawn  %amount% %currency%'
+# message on successful withdrawal of money from the ATM balance
+successfullyCreateCard: '&aCard number %number% with value type %currency% successfully created'
+# message on successful card creation
+successfullyAddBalansCard: '&aCard number %number% successfully topped up on %amount% %currency%'
+# message on successful replenishment of the card balance
+successfullyRemoveBalansCard: '&aYou have successfully withdrawn money from your card balance'
+# message on successful withdrawal of money from the card balance
+successfullyDeleteCard: '&aYou have successfully deleted the card number %number%'
+# message when the card was successfully deleted
+successfullyAddMoneyDeleteCard: '&aThe money from the card you deleted has been successfully moved to your inventory. Amount: %amount% %currency%'
+# a message when money from a remote card has been successfully moved to your inventory
+successfullyTransferMoneySender: '&aYou have successfully transferred %amountRecipient% %currencyRecipient% your balance has been withdrawn %amountSender% %currencySender%'
+# message when sending money to another card
+successfullyTransferMoneyRecipient: '&aPlayer %player% transferred money to your balance %amount% %currency%'
+# message to the recipient upon successful transfer to the card
+
+#
+# Message during successful execution of commands
+#
+reloadMessage: '&aConfig successfully reload'
+# message when the command is entered successfully /kabibank reload
+successfullyCreateATM: '&aATM successfully created on %coordinate%'
+# message on successful ATM creation
+atmListMain: '&a%number%. ATM number: %number%, координаты банкомата %coordinate%'
+# one of the messages when using the command /bank list
+atmListCurrency: '&a%number%. Value: %currency% amount of currency: %balans%'
+# one of the messages when using the command /bank list
+helpMessageBank:
+  - '&a--- Menu for help ---'
+  - '/bank create - create an ATM at your location'
+  - '/bank create <y> <x> <z> - create an ATM at the set coordinates'
+  - '/bank delete <number> - delete ATM'
+  - '/bank list - list of ATM'
+  - '/bank help - command for help /bank'
+  - '&----------------------'
+# message for the help menu
+
+#
+# Name of menu (You can't put the same name)
+#
+nameMainMenu: '&6ATM &e%number%'
+# name of main menu
+namePersonnelMenu: '&6Staff Menu &e%number%'
+# name of the menu for staff
+nameCurrencyMenu: '&6Currency selection'
+# name of the currency selection menu
+nameCurrencyMenuATM: '&6Choosing the currency to top up the ATM'
+# the name of the menu for selecting the currency to replenish the ATM
+nameQuantitySelectionATM: '&6The number of the currency you want to deposit to the ATM account'
+# the name of the menu where the amount of money for the top-up ATM is selected
+nameQuantitySelection: '&6The number of currency you want to put on the card'
+# the name of the menu de selects the amount of money to top up the card
+nameRemoveBalansCard: '&6Withdrawing money from the card'
+# the name of the menu where money is withdrawn from the card
+nameRemoveBalansATM: '&6Withdrawing money from an ATM'
+# the name of the menu where money is withdrawn from the ATM
+nameCreateCard: '&6Create a card'
+# name of the create card menu
+nameMenuCard: '&6Menu card`s'
+# название меню карточек
+nameSelectionCard: '&6Choose card'
+# name of the card selection menu
+nameDeleteCard: '&6Delete card'
+# название меню удаления карточек
+nameInfoCard: '&6info about the card'
+# name of the card information menu
+nameOptionTransferOnlineOrOffline: '&6Choose online or offline players transfer'
+# the name of the menu for choosing the category of players to transfer money to
+nameTransferOnline: '&6Transfer money for online players'
+# the name of the menu for transferring money to players that online
+nameTransferOffline: '&6Transfer money for offline players'
+# name of the menu for transferring money to offline players
+nameMyCardTransfer: '&6Choosing a card to transfer'
+# name of the card selection menu from which to transfer money
+nameRecipientCardTransfer: "&6The choice of the player's card to which he will receive money"
+# the name of the menu of the card to transfer money to
+nameTransferMoney: '&6Transfer money'
+# name of the money transfer menu
+nameConfirmationDeleteAtm: '&6Delete ATM'
+# menu name confirmation of ATM deletion
