@@ -3,8 +3,6 @@ package ua.kotarych.kabibank.event;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,7 +13,6 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import ua.kotarych.kabibank.api.event.*;
-import ua.kotarych.kabibank.commands.BankCommand;
 import ua.kotarych.kabibank.config.Config;
 import ua.kotarych.kabibank.config.MaterialGui;
 import ua.kotarych.kabibank.files.CoolAtm;
@@ -64,7 +61,7 @@ public class ClickGui implements Listener {
                     openMenuCard();
                     openSelectionCardAddRemoveMoney();
                     openActionCard();
-                    addRemoveBalansCard();
+                    addBalansRemoveCard();
                     deleteCard();
                     openMenuInfoCard();
                     openOptionTransferOnlineOrOffline();
@@ -435,87 +432,88 @@ public class ClickGui implements Listener {
         }
     }
 
-    private static void addRemoveBalansCard() {
-            if (isNameGui(Message.getNameQuantitySelection()) | isNameGui(Message.getNameRemoveBalansCard())) {
-                Card card = Objects.requireNonNull(CardsData.get(player)).getCard();
+    private static void addBalansRemoveCard() {
+        if (isNameGui(Message.getNameQuantitySelection()) | isNameGui(Message.getNameRemoveBalansCard())) {
+            Card card = Objects.requireNonNull(CardsData.get(player)).getCard();
 
-                if (card != null) {
-                    Atm atm = CoolAtm.getATM(NumbersATM.get(player).getNumber());
-                    if (atm != null) {
+            if (card != null) {
+                Atm atm = CoolAtm.getATM(NumbersATM.get(player).getNumber());
+                if (atm != null) {
 
-                        if (Objects.requireNonNull(CardsData.get(player)).isAdd()) {
+                    if (Objects.requireNonNull(CardsData.get(player)).isAdd()) {
 
-                            int amountAdd = addBalansCard(card.getBalans() + " " + card.getCurrency());
-                            if (amountAdd != 0) {
+                        int amountAdd = addBalansCard(card.getBalans() + " " + card.getCurrency());
+                        if (amountAdd != 0) {
 
-                                if (player.hasPermission("Kabibank.menuCard")) {
+                            if (player.hasPermission("Kabibank.menuCard")) {
 
-                                    if (isThereEnoughMoney(amountAdd, card.getCurrency())) {
+                                if (isThereEnoughMoney(amountAdd, card.getCurrency())) {
 
-                                        EventAddBalansCard eventAddBalansCard = new EventAddBalansCard(player, card.getNumber(), amountAdd, atm.getNumberATM());
-                                        Bukkit.getPluginManager().callEvent(eventAddBalansCard);
-                                        boolean cancel = eventAddBalansCard.isCancelled();
-                                        int amount = eventAddBalansCard.getAmount();
+                                    EventAddBalansCard eventAddBalansCard = new EventAddBalansCard(player, card.getNumber(), amountAdd, atm.getNumberATM());
+                                    Bukkit.getPluginManager().callEvent(eventAddBalansCard);
+                                    boolean cancel = eventAddBalansCard.isCancelled();
+                                    int amount = eventAddBalansCard.getAmount();
 
-                                        if (!cancel) {
+                                    if (!cancel) {
 
-                                            playerDeleteMoney(amount, card.getCurrency());
-                                            KabibankCard.addBalans(card.getNumber(), amount);
-                                            KabibankCard.save();
-                                            CoolAtm.addBalansATM(atm.getNumberATM(), card.getCurrency(), amount);
-                                            CoolAtm.save();
+                                        playerDeleteMoney(amount, card.getCurrency());
+                                        KabibankCard.addBalans(card.getNumber(), amount);
+                                        KabibankCard.save();
+                                        CoolAtm.addBalansATM(atm.getNumberATM(), card.getCurrency(), amount);
+                                        CoolAtm.save();
 
-                                            player.sendMessage(FuncString.stringToComponent(Message.getSuccessfullyAddBalansCard().replace("%number%", String.valueOf(card.getNumber())).replace("%amount%",
-                                                    String.valueOf(amount)).replace("%currency%", card.getCurrency())));
-                                            player.openInventory(gui.addBalans(card.getBalans() + " " + card.getCurrency(), Message.getNameQuantitySelection()));
-                                        }
-                                    } else {
-                                        player.sendMessage(FuncString.stringToComponent(Message.getErrorAddBalansCard().replace("%amount%", String.valueOf(amountAdd))));
+                                        player.sendMessage(FuncString.stringToComponent(Message.getSuccessfullyAddBalansCard().replace("%number%", String.valueOf(card.getNumber())).replace("%amount%",
+                                                String.valueOf(amount)).replace("%currency%", card.getCurrency())));
+                                        player.openInventory(gui.addBalans(card.getBalans() + " " + card.getCurrency(), Message.getNameQuantitySelection()));
                                     }
                                 } else {
-                                    player.sendMessage(FuncString.stringToComponent(Message.getErrorPermissionMenu()));
+                                    player.sendMessage(FuncString.stringToComponent(Message.getErrorAddBalansCard().replace("%amount%", String.valueOf(amountAdd))));
                                 }
                             } else {
+                                player.sendMessage(FuncString.stringToComponent(Message.getErrorPermissionMenu()));
+                            }
+                        }
+                    } else {
 
-                            int amountRemove = removeBalansCard(card.getBalans() + " " + card.getCurrency());
-                            if (amountRemove != 0) {
-                                if (player.hasPermission("Kabibank.menuCard")) {
+                        int amountRemove = removeBalansCard(card.getBalans() + " " + card.getCurrency());
+                        if (amountRemove != 0) {
+                            if (player.hasPermission("Kabibank.menuCard")) {
 
-                                    if (KabibankCard.isBalans(card.getNumber(), amountRemove)) {
-                                        if (getFreeInventorySpace(player, Config.getMaterialCurrency(card.getCurrency())) >= amountRemove) {
-                                            if (CoolAtm.isContainsMoney(card.getCurrency(), amountRemove, atm.getNumberATM())) {
+                                if (KabibankCard.isBalans(card.getNumber(), amountRemove)) {
+                                    if (getFreeInventorySpace(player, Config.getMaterialCurrency(card.getCurrency())) >= amountRemove) {
+                                        if (CoolAtm.isContainsMoney(card.getCurrency(), amountRemove, atm.getNumberATM())) {
 
-                                                EventRemoveBalansCard removeBalansCard = new EventRemoveBalansCard(player, card.getNumber(), amountRemove, atm.getNumberATM());
-                                                Bukkit.getPluginManager().callEvent(removeBalansCard);
-                                                boolean cansel = removeBalansCard.isCancelled();
-                                                int amount = removeBalansCard.getAmount();
+                                            EventRemoveBalansCard removeBalansCard = new EventRemoveBalansCard(player, card.getNumber(), amountRemove, atm.getNumberATM());
+                                            Bukkit.getPluginManager().callEvent(removeBalansCard);
+                                            boolean cansel = removeBalansCard.isCancelled();
+                                            int amount = removeBalansCard.getAmount();
 
-                                                if (!cansel) {
+                                            if (!cansel) {
 
-                                                    KabibankCard.removeBalans(card.getNumber(), amount);
-                                                    KabibankCard.save();
-                                                    playerAddMoney(amount, card.getCurrency());
-                                                    CoolAtm.removeBalansATM(atm.getNumberATM(), card.getCurrency(), amount);
-                                                    CoolAtm.save();
+                                                KabibankCard.removeBalans(card.getNumber(), amount);
+                                                KabibankCard.save();
+                                                playerAddMoney(amount, card.getCurrency());
+                                                CoolAtm.removeBalansATM(atm.getNumberATM(), card.getCurrency(), amount);
+                                                CoolAtm.save();
 
-                                                    player.sendMessage(FuncString.stringToComponent(Message.getSuccessfullyRemoveBalansCard()));
-                                                    player.openInventory(gui.removeBalans(card.getBalans() + " " + card.getCurrency(), Message.getNameRemoveBalansCard()));
+                                                player.sendMessage(FuncString.stringToComponent(Message.getSuccessfullyRemoveBalansCard()));
+                                                player.openInventory(gui.removeBalans(card.getBalans() + " " + card.getCurrency(), Message.getNameRemoveBalansCard()));
 
-                                                }
-
-                                            } else {
-                                                player.sendMessage(FuncString.stringToComponent(Message.getErrorRemoveCardATM()));
                                             }
+
                                         } else {
-                                            player.sendMessage(FuncString.stringToComponent(Message.getErrorFreeInventoryCard()));
+                                            player.sendMessage(FuncString.stringToComponent(Message.getErrorRemoveCardATM()));
                                         }
                                     } else {
-                                        player.sendMessage(FuncString.stringToComponent(Message.getErrorRemoveBalansCard().replace("%amount%", String.valueOf(amountRemove)).replace("%balans%", String.valueOf(card.getBalans()))));
+                                        player.sendMessage(FuncString.stringToComponent(Message.getErrorFreeInventoryCard()));
                                     }
                                 } else {
-                                    player.sendMessage(FuncString.stringToComponent(Message.getErrorPermissionMenu()));
+                                    player.sendMessage(FuncString.stringToComponent(Message.getErrorRemoveBalansCard().replace("%amount%", String.valueOf(amountRemove)).replace("%balans%", String.valueOf(card.getBalans()))));
                                 }
+                            } else {
+                                player.sendMessage(FuncString.stringToComponent(Message.getErrorPermissionMenu()));
                             }
+
                         }
                     }
                 }
