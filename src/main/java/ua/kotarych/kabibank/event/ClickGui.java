@@ -433,7 +433,7 @@ public class ClickGui implements Listener {
     }
 
     private static void addRemoveBalansCard() {
-        //test
+
         if (isNameGui(Message.getNameQuantitySelection()) | isNameGui(Message.getNameRemoveBalansCard())) {
             Card card = Objects.requireNonNull(CardsData.get(player)).getCard();
 

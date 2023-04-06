@@ -32,7 +32,8 @@ public class Atm {
         }
     }
     private int amountCurrency(String currency){
-        return currencyBalans.get(currency);
+            return currencyBalans.get(currency);
+
     }
     public boolean addBalans(String currency, int amount){
         if (currencyBalans.containsKey(currency)){
@@ -43,6 +44,12 @@ public class Atm {
             currencyBalans.put(currency, newBalans);
 
             return true;
+        } else {
+            if (Config.getMaterialCurrency(currency) != null){
+                 currencyBalans.put(currency, amount);
+
+                 return true;
+            }
         }
         return false;
     }
