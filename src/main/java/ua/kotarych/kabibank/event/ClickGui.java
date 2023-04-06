@@ -61,7 +61,7 @@ public class ClickGui implements Listener {
                     openMenuCard();
                     openSelectionCardAddRemoveMoney();
                     openActionCard();
-                    addBalansRemoveCard();
+                    addRemoveBalansCard();
                     deleteCard();
                     openMenuInfoCard();
                     openOptionTransferOnlineOrOffline();
@@ -432,7 +432,8 @@ public class ClickGui implements Listener {
         }
     }
 
-    private static void addBalansRemoveCard() {
+    private static void addRemoveBalansCard() {
+        //test
         if (isNameGui(Message.getNameQuantitySelection()) | isNameGui(Message.getNameRemoveBalansCard())) {
             Card card = Objects.requireNonNull(CardsData.get(player)).getCard();
 
